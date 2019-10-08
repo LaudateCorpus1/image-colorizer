@@ -3,7 +3,7 @@ const Img = require('../models/image');
 const multer = require('multer');
 const deepai = require('deepai'); 
 const fs = require('fs');
-deepai.setApiKey('14abefb1-a111-4f6b-a1ef-1def346ab658');
+deepai.setApiKey(process.env.KEY);
 
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
@@ -20,6 +20,8 @@ const upload = multer({
     limits:10000000,
 }).single('image');
 
+
+
 // function for deleting the images from server
 
 // const kenycleaner = (path)=>{
@@ -34,15 +36,28 @@ const upload = multer({
 
 router.get('/',async (req,res)=>{
 
-    res.render('index.ejs',{img : req.session.result});
+    res.render('index.ejs',{
+
+        img : req.session.result,
+        err:req.session.error
+    });
+
     req.session.data=null;
     req.session.result = null;
+    req.session.error = null;
 });
 
 router.post('/',async (req,res)=>{
     upload(req,res,async ()=>{
         // console.log(req);
 
+
+        if(req.file===undefined){
+            req.session.error  = 'Please Select a image';
+            return res.redirect('/');
+        }
+
+        req.session.error = null;
 
         let img = new Img();
 

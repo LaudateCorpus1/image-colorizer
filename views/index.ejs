@@ -4,17 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Image Colorizer</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="//cdn.muicss.com/mui-0.9.43/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.9.43/js/mui.min.js"></script>
 </head>
 <body>
-    <form method="POST" action="" enctype="multipart/form-data">
-        <input type="file" name="image" >
-        <button type="submit">
-            Submit
-        </button>
-    </form>
+   <div class="form-box">
+    <div class="login-page">
+        <div class="form">
+          <form action="/" method="POST" enctype="multipart/form-data"  class="login-form">
+            <input type="file" name="image" placeholder="Select the image"/>
+            <button type="submit">Colorize</button>
+          </form>
+        </div>
+      </div>
+   </div>
+
+   <% if(err){ %>
+    <p class="error">
+        <%= err %>
+    </p>
+    <% } %>
+
     <% if(img){ %>
-        <img src="<%= img %>" />
+        <div class="image">
+            <img src="<%= img %>" />
+        </div>
+        <div class="form">
+            <button>
+                <a href="<%=img %>" target="_blank" >
+                    Download
+                </a>
+            </button>
+        </div>
+        
+        
+       
     <% } %>
 </body>
 </html>

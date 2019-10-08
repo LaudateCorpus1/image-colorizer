@@ -26,7 +26,7 @@ db.once('open',()=>{
 
 app.set('view engine','ejs');
 
-// app.use(express.static(path.join(__dirname,'/imgaes')));
+app.use(express.static(path.join(__dirname,'/public')));
 
 app.use(bodyParser.urlencoded({extended:false}));
 
