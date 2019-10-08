@@ -110,21 +110,22 @@ body {
 }
 
 .image{
-    width: 30%;
-    max-height:500px;
+    width: 70%;
+    max-height:1200px;
     margin: auto;
     margin-bottom: 3%;
    
 }
 
 .image img{
-    max-height: 500px;
+    max-height: 1200px;
     width: 100%;
     object-fit: contain;
     border: 2px solid #1b1b1b;
     border-radius: 10px;
     
 }
+
 
 .error{
     color:red;
